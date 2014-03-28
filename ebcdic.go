@@ -1,6 +1,8 @@
 /*
 Package ebcdic provides functions to convert Unicode to EBCDIC and vice-versa.
 
+It uses conversion table data from http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/EBCDIC/CP037.TXT
+
 Copyright Mike Hughes 2014 (intermernet AT gmail DOT com)
 */
 package ebcdic
