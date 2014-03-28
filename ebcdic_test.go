@@ -14,7 +14,7 @@ var (
 	unicodeString = "Testing, 123"
 	ebcdicBytes   = []byte{0xE3, 0x85, 0xA2, 0xA3, 0x89, 0x95, 0x87, 0x6B, 0x40, 0xF1, 0xF2, 0xF3}
 
-	// Invalid string, contains Unicode code-points higher than 255. Will replace invalid characters with NUL
+	// Invalid string, contains Unicode code-points higher than 255. Invalid characters replaced with NUL
 	failString = "Testing, 1日2本3語"
 	failBytes  = []byte{0xE3, 0x85, 0xA2, 0xA3, 0x89, 0x95, 0x87, 0x6B, 0x40, 0xF1, 0x00, 0xF2, 0x00, 0xF3, 0x00}
 	failResult = "Testing, 1\x002\x003\x00"
