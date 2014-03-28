@@ -2,16 +2,30 @@
 
 EBCDIC / Unicode transcoding package for Go (Code page 37 only, `00` .. `FF`).
 
-For example will convert from the EBCDIC bytes:
+Example usage:
 
-    c1 95 40 81 93 93 85 87 85 84 40 83 88 81 99 81 83 a3 85 99 40 a2 85
-    a3 40 a4 a2 85 84 40 96 95 40 c9 c2 d4 40 84 89 95 96 a2 81 a4 99 a2
+    package main
+    
+    import (
+    	"fmt"
+    
+    	"github.com/Intermernet/ebcdic"
+    )
 
-To the Unicode string:
+    func main() {
+    	input := []byte{0xc1, 0x95, 0x40, 0x81, 0x93, 0x93, 0x85, 0x87, 0x85, 0x84,
+    		0x40, 0x83, 0x88, 0x81, 0x99, 0x81, 0x83, 0xa3, 0x85, 0x99, 0x40, 0xa2,
+    		0x85, 0xa3, 0x40, 0xa4, 0xa2, 0x85, 0x84, 0x40, 0x96, 0x95, 0x40, 0xc9,
+    		0xc2, 0xd4, 0x40, 0x84, 0x89, 0x95, 0x96, 0xa2, 0x81, 0xa4, 0x99, 0xa2,
+    	}
+    	fmt.Println(string(ebcdic.Decode(input)))
+    }
 
-    An alleged character set used on IBM dinosaurs
+will produce the Unicode string:
 
-and vice versa.
+`An alleged character set used on IBM dinosaurs`
+
+You can also convert Unicode text (Code point `00` .. `FF`) to EBCDIC.
 
 See [godoc.org](https://godoc.org/github.com/Intermernet/ebcdic) for usage.
 
