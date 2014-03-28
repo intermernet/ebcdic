@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	// Valid string, can translate both ways.
+	// Valid string, can translate both ways
 	unicodeString = "Testing, 123"
 	ebcdicBytes   = []byte{0xE3, 0x85, 0xA2, 0xA3, 0x89, 0x95, 0x87, 0x6B, 0x40, 0xF1, 0xF2, 0xF3}
 
