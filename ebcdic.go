@@ -7,8 +7,8 @@ package ebcdic
 
 import "unicode"
 
-// Encode Unicode to EBCDIC
-// Replaces invalid characters with NUL
+// Encode Unicode to EBCDIC.
+// Replaces invalid characters with NUL.
 func Encode(in []byte) []byte {
 	runes := []rune(string(in)) // Convert bytes back to runes
 	var out []byte
@@ -22,8 +22,8 @@ func Encode(in []byte) []byte {
 	return out
 }
 
-// Decode EBCDIC to Unicode
-// Replaces invalid characters with NUL
+// Decode EBCDIC to Unicode.
+// Replaces invalid characters with NUL.
 func Decode(in []byte) []byte {
 	var out []byte
 	for _, v := range in {
