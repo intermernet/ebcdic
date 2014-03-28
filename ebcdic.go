@@ -11,8 +11,8 @@ const charMapLength = 0xFF
 
 // Encode Unicode to EBCDIC.
 // Replaces invalid characters with NUL.
-func Encode(in []byte) []byte {
-	runes := []rune(string(in)) // Convert bytes back to runes
+func Encode(Unicode []byte) []byte {
+	runes := []rune(string(Unicode)) // Convert bytes back to runes
 	var out []byte
 	for _, v := range runes {
 		if v <= charMapLength {
@@ -26,9 +26,9 @@ func Encode(in []byte) []byte {
 
 // Decode EBCDIC to Unicode.
 // Replaces invalid characters with NUL.
-func Decode(in []byte) []byte {
+func Decode(EBCDIC []byte) []byte {
 	var out []byte
-	for _, v := range in {
+	for _, v := range EBCDIC {
 		if v <= charMapLength {
 			out = append(out, byte(unicodeMap[v]))
 		} else {
