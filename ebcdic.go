@@ -1,7 +1,7 @@
 /*
 ebcdic provides functions to convert Unicode to EBCDIC and vice-versa.
 
-Copyright Mike Hughes 2013 (intermernet AT gmail DOT com)
+Copyright Mike Hughes 2014 (intermernet AT gmail DOT com)
 */
 package ebcdic
 
