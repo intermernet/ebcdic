@@ -6,7 +6,6 @@ package ebcdic
 import (
 	"bytes"
 	"testing"
-	"unicode"
 )
 
 var (
@@ -64,8 +63,8 @@ func TestDecodeCharMap(t *testing.T) {
 
 // Output an ordered byte-slice, 0..256
 func ordered() []byte {
-	out := make([]byte, unicode.MaxLatin1+1)
-	for i := 0; i <= unicode.MaxLatin1; i++ {
+	out := make([]byte, charSetLength+1)
+	for i := 0; i <= charSetLength; i++ {
 		out[i] = byte(i)
 	}
 	return out
