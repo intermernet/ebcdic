@@ -1,7 +1,5 @@
 /*
 Tests for package ebcdic
-
-Copyright Mike Hughes 2013 (intermernet AT gmail DOT com)
 */
 package ebcdic
 
