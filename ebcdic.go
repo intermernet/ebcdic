@@ -7,7 +7,7 @@ Copyright Mike Hughes 2014 (intermernet AT gmail DOT com)
 */
 package ebcdic
 
-const charSetLength = 0xFF
+const charMapLength = 0xFF
 
 // Encode Unicode to EBCDIC.
 // Replaces invalid characters with NUL.
@@ -15,7 +15,7 @@ func Encode(in []byte) []byte {
 	runes := []rune(string(in)) // Convert bytes back to runes
 	var out []byte
 	for _, v := range runes {
-		if v <= charSetLength {
+		if v <= charMapLength {
 			out = append(out, byte(ebcdicMap[v]))
 		} else {
 			out = append(out, 0) // NUL if out of range
@@ -29,7 +29,7 @@ func Encode(in []byte) []byte {
 func Decode(in []byte) []byte {
 	var out []byte
 	for _, v := range in {
-		if v <= charSetLength {
+		if v <= charMapLength {
 			out = append(out, byte(unicodeMap[v]))
 		} else {
 			out = append(out, 0) // NUL if out of range

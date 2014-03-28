@@ -63,8 +63,8 @@ func TestDecodeCharMap(t *testing.T) {
 
 // Output an ordered byte-slice, 0..256
 func ordered() []byte {
-	out := make([]byte, charSetLength+1)
-	for i := 0; i <= charSetLength; i++ {
+	out := make([]byte, charMapLength+1)
+	for i := 0; i <= charMapLength; i++ {
 		out[i] = byte(i)
 	}
 	return out
