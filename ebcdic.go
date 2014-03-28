@@ -3,6 +3,10 @@ Package ebcdic provides functions to convert Unicode to EBCDIC and vice-versa.
 
 It uses conversion table data from http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/EBCDIC/CP037.TXT
 
+Valid codepage bytes for both Unicode and EBCDIC are 0x00..0xFF
+
+Invalid characters are replaced with NUL (0x00)
+
 Copyright Mike Hughes 2014 (intermernet AT gmail DOT com)
 */
 package ebcdic

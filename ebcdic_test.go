@@ -47,7 +47,7 @@ func TestDecodeFail(t *testing.T) {
 	}
 }
 
-// Test Encoding of entire Unicode <= 255 character map
+// Test Encoding of entire Unicode <= 0xFF character map
 func TestEncodeCharMap(t *testing.T) {
 	if bytes.Compare(Encode([]byte(string(unicodeMap))), ordered()) != 0 {
 		t.Error("encountered Encoding CharMap error.")
@@ -61,7 +61,7 @@ func TestDecodeCharMap(t *testing.T) {
 	}
 }
 
-// Output an ordered byte-slice, 0..256
+// Output an ordered byte-slice, 0x00..0x100
 func ordered() []byte {
 	out := make([]byte, charMapLength+1)
 	for i := 0; i <= charMapLength; i++ {
