@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/Intermernet/ebcdic?status.png)](https://godoc.org/github.com/Intermernet/ebcdic) [![Build Status](https://drone.io/github.com/Intermernet/ebcdic/status.png)](https://drone.io/github.com/Intermernet/ebcdic/latest)[![Coverage Status](https://coveralls.io/repos/Intermernet/ebcdic/badge.png?branch=master)](https://coveralls.io/r/Intermernet/ebcdic?branch=master)
+[![GoDoc](https://godoc.org/github.com/Intermernet/ebcdic?status.png)](https://godoc.org/github.com/Intermernet/ebcdic) [![Build Status](https://drone.io/github.com/Intermernet/ebcdic/status.png)](https://drone.io/github.com/Intermernet/ebcdic/latest) [![Coverage Status](https://coveralls.io/repos/Intermernet/ebcdic/badge.png?branch=master)](https://coveralls.io/r/Intermernet/ebcdic?branch=master)
 
 EBCDIC / Unicode transcoding package for Go (Code page 37 only, `0x00` .. `0xFF`).
 
