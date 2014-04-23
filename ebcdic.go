@@ -33,11 +33,7 @@ func Encode(Unicode []byte) []byte {
 func Decode(EBCDIC []byte) []byte {
 	var out []byte
 	for _, v := range EBCDIC {
-		if v <= charMapLength {
-			out = append(out, byte(unicodeMap[v]))
-		} else {
-			out = append(out, 0) // NUL if out of range
-		}
+		out = append(out, byte(unicodeMap[v]))
 	}
 	return out
 }
