@@ -14,7 +14,7 @@ package ebcdic
 const charMapLength = 0xFF
 
 // Encode Unicode to EBCDIC.
-// Replaces invalid characters with NUL.
+// Replaces Unicode runes > codepoint FF with NUL.
 func Encode(Unicode []byte) []byte {
 	runes := []rune(string(Unicode)) // Convert bytes back to runes
 	var out []byte
@@ -29,7 +29,6 @@ func Encode(Unicode []byte) []byte {
 }
 
 // Decode EBCDIC to Unicode.
-// Replaces invalid characters with NUL.
 func Decode(EBCDIC []byte) []byte {
 	var out []byte
 	for _, v := range EBCDIC {
