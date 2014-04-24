@@ -20,7 +20,7 @@ func Encode(Unicode []byte) []byte {
 	var out []byte
 	for _, v := range runes {
 		if v <= charMapLength { // Unicode <= FF, in valid translation range
-			out = append(out, byte(ebcdicMap[v]))
+			out = append(out, ebcdicMap[v])
 		} else {
 			out = append(out, 0) // Replace with NUL if out of range
 		}
