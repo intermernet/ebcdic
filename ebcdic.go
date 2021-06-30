@@ -7,7 +7,7 @@
 //
 // Invalid characters are replaced with `NUL` (`0x00`)
 //
-// Copyright Mike Hughes 2014 (intermernet AT gmail DOT com)
+// Copyright Mike Hughes 2014 - 2021 (intermernet AT gmail DOT com)
 //
 package ebcdic
 
