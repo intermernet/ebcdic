@@ -8,5 +8,5 @@ script:
   - $GOPATH/bin/goveralls -service=travis-ci
 # blocklist
 branches:
-  except:
-  - fuzz
+  only:
+  - master

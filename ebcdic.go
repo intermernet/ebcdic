@@ -19,9 +19,11 @@ var ErrEncode = errors.New("could not encode characters")
 
 // Encode Unicode to EBCDIC.
 // Replaces Unicode runes > codepoint FF with NUL.
-func Encode(Unicode []byte) (out []byte, err error) {
-	//runes := []rune(string(Unicode)) // Convert bytes back to runes
-	//for _, v := range runes {
+func Encode(Unicode []byte) ([]byte, error) {
+	var (
+		out []byte
+		err error
+	)
 	for _, v := range string(Unicode) {
 		if v <= charMapLength { // Unicode <= FF, in valid translation range
 			out = append(out, ebcdicMap[v])

@@ -25,7 +25,7 @@ func TestEncode(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if bytes.Compare(out, ebcdicBytes) != 0 {
+	if !bytes.Equal(out, ebcdicBytes) {
 		t.Error("encountered Encoding error.")
 	}
 }
@@ -43,7 +43,7 @@ func TestEncodeFail(t *testing.T) {
 	if err != nil && err != ErrEncode {
 		t.Error("encountered Encoding Failure error.")
 	}
-	if bytes.Compare(out, failBytes) != 0 {
+	if !bytes.Equal(out, failBytes) {
 		t.Error("encountered Encoding Failure error.")
 	}
 }
@@ -61,14 +61,14 @@ func TestEncodeCharMap(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if bytes.Compare(out, ordered()) != 0 {
+	if !bytes.Equal(out, ordered()) {
 		t.Error("encountered Encoding CharMap error.")
 	}
 }
 
 // Test Decoding of entire EBCDIC character map
 func TestDecodeCharMap(t *testing.T) {
-	if bytes.Compare(Decode(ebcdicMap), ordered()) != 0 {
+	if !bytes.Equal(Decode(ebcdicMap), ordered()) {
 		t.Error("encountered Decoding CharMap error.")
 	}
 }
