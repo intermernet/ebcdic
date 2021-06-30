@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/Intermernet/ebcdic?status.png)](https://godoc.org/github.com/Intermernet/ebcdic) [![Build Status](https://drone.io/github.com/Intermernet/ebcdic/status.png)](https://drone.io/github.com/Intermernet/ebcdic/latest) [![Coverage Status](https://coveralls.io/repos/Intermernet/ebcdic/badge.png?branch=master)](https://coveralls.io/r/Intermernet/ebcdic?branch=master)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/intermernet/ebcdic)](https://pkg.go.dev/github.com/intermernet/ebcdic) [![Build Status](https://travis-ci.com/intermernet/ebcdic.svg?branch=master)](https://travis-ci.com/intermernet/ebcdic) [![Coverage Status](https://coveralls.io/repos/github/intermernet/ebcdic/badge.svg?branch=master)](https://coveralls.io/github/intermernet/ebcdic?branch=master)
 
 EBCDIC / Unicode transcoding package for Go (Code page 37 only, `0x00` .. `0xFF`).
 
@@ -9,7 +9,7 @@ Example usage:
     import (
     	"fmt"
     
-    	"github.com/Intermernet/ebcdic"
+    	"github.com/intermernet/ebcdic"
     )
 
     func main() {

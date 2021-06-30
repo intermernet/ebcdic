@@ -1,11 +1,15 @@
 //
 //Tests for fuzzing package ebcdic
 //
-package ebcdic
+
+// +build gofuzzbeta
+package ebcdic_fuzz
 
 import (
 	"bytes"
 	"testing"
+
+	"github.com/intermernet/ebcdic"
 )
 
 func FuzzRoundTrip(f *testing.F) {
@@ -15,14 +19,14 @@ func FuzzRoundTrip(f *testing.F) {
 			t.Skip()
 		}
 		t.Parallel() // seed corpus tests can run in parallel
-		encData, err := Encode(data)
+		encData, err := ebcdic.Encode(data)
 		if err != nil {
-			if err == ErrEncode {
+			if err == ebcdic.ErrEncode {
 				t.Skip()
 			}
 			t.Log(err)
 		}
-		decData := Decode(encData)
+		decData := ebcdic.Decode(encData)
 		if !bytes.Equal(decData, data) || len(decData) != len(data) {
 			t.Errorf("output %v does not match the provided input %v", decData, data)
 		}
