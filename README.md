@@ -27,7 +27,7 @@ will produce the Unicode string:
 
 You can also convert Unicode text (Code point `00` .. `FF`) to EBCDIC.
 
-See [godoc.org](https://godoc.org/github.com/Intermernet/ebcdic) for usage.
+See [pkg.go.dev](https://pkg.go.dev/github.com/intermernet/ebcdic) for usage.
 
 Conversion table data from http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/EBCDIC/CP037.TXT
 
