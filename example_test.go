@@ -13,6 +13,7 @@ func ExampleEncode() {
 		panic(err)
 	}
 	fmt.Printf("%0X\n", output)
+	// Output: C195408193938587858440838881998183A3859940A285A340A4A2858440969540C9C2D44084899596A281A499A2
 }
 
 func ExampleDecode() {
