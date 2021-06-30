@@ -1,6 +1,6 @@
-/*
-Tests for package ebcdic
-*/
+//
+// Tests for package ebcdic
+//
 package ebcdic
 
 import (
@@ -21,7 +21,11 @@ var (
 
 // Test Encoding of valid string
 func TestEncode(t *testing.T) {
-	if bytes.Compare(Encode([]byte(unicodeString)), ebcdicBytes) != 0 {
+	out, err := Encode([]byte(unicodeString))
+	if err != nil {
+		t.Error(err)
+	}
+	if bytes.Compare(out, ebcdicBytes) != 0 {
 		t.Error("encountered Encoding error.")
 	}
 }
@@ -35,7 +39,11 @@ func TestDecode(t *testing.T) {
 
 // Test Encoding of invalid string
 func TestEncodeFail(t *testing.T) {
-	if bytes.Compare(Encode([]byte(failString)), failBytes) != 0 {
+	out, err := Encode([]byte(failString))
+	if err != nil && err != ErrEncode {
+		t.Error("encountered Encoding Failure error.")
+	}
+	if bytes.Compare(out, failBytes) != 0 {
 		t.Error("encountered Encoding Failure error.")
 	}
 }
@@ -49,14 +57,18 @@ func TestDecodeFail(t *testing.T) {
 
 // Test Encoding of entire Unicode <= 0xFF character map
 func TestEncodeCharMap(t *testing.T) {
-	if bytes.Compare(Encode([]byte(string(unicodeMap))), ordered()) != 0 {
+	out, err := Encode([]byte(string(unicodeMap)))
+	if err != nil {
+		t.Error(err)
+	}
+	if bytes.Compare(out, ordered()) != 0 {
 		t.Error("encountered Encoding CharMap error.")
 	}
 }
 
 // Test Decoding of entire EBCDIC character map
 func TestDecodeCharMap(t *testing.T) {
-	if bytes.Compare(Encode([]byte(string(unicodeMap))), ordered()) != 0 {
+	if bytes.Compare(Decode(ebcdicMap), ordered()) != 0 {
 		t.Error("encountered Decoding CharMap error.")
 	}
 }

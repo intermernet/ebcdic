@@ -3,12 +3,16 @@ package ebcdic_test
 import (
 	"fmt"
 
-	"github.com/Intermernet/ebcdic"
+	"github.com/intermernet/ebcdic"
 )
 
 func ExampleEncode() {
 	input := []byte("An alleged character set used on IBM dinosaurs")
-	fmt.Println(string(ebcdic.Encode(input)))
+	output, err := ebcdic.Encode(input)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(output))
 }
 
 func ExampleDecode() {
