@@ -12,7 +12,7 @@ func ExampleEncode() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(string(output))
+	fmt.Printf("%0X\n", output)
 }
 
 func ExampleDecode() {
