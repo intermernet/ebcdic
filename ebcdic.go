@@ -21,6 +21,7 @@ var ErrEncode = errors.New("could not encode characters")
 
 // Encode Unicode to EBCDIC.
 // Replaces Unicode runes > codepoint FF with NUL.
+// If this replacement occurs, it returns ErrEncode.
 func Encode(Unicode string) ([]byte, error) {
 	var (
 		out []byte
@@ -33,7 +34,6 @@ func Encode(Unicode string) ([]byte, error) {
 			out = append(out, 0) // Replace with NUL if out of range
 			err = ErrEncode
 		}
-		//fmt.Printf("char: %X\terr: %v\n", v, err)
 	}
 	return out, err
 }
