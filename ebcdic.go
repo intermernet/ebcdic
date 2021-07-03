@@ -11,7 +11,9 @@
 //
 package ebcdic
 
-import "errors"
+import (
+	"errors"
+)
 
 const charMapLength = 0xFF
 
@@ -19,27 +21,28 @@ var ErrEncode = errors.New("could not encode characters")
 
 // Encode Unicode to EBCDIC.
 // Replaces Unicode runes > codepoint FF with NUL.
-func Encode(Unicode []byte) ([]byte, error) {
+func Encode(Unicode string) ([]byte, error) {
 	var (
 		out []byte
 		err error
 	)
-	for _, v := range string(Unicode) {
+	for _, v := range Unicode {
 		if v <= charMapLength { // Unicode <= FF, in valid translation range
 			out = append(out, ebcdicMap[v])
 		} else {
 			out = append(out, 0) // Replace with NUL if out of range
 			err = ErrEncode
 		}
+		//fmt.Printf("char: %X\terr: %v\n", v, err)
 	}
 	return out, err
 }
 
 // Decode EBCDIC to Unicode.
-func Decode(EBCDIC []byte) []byte {
-	var out []byte
+func Decode(EBCDIC []byte) string {
+	var out []rune
 	for _, v := range EBCDIC {
-		out = append(out, byte(unicodeMap[v]))
+		out = append(out, unicodeMap[v])
 	}
-	return out
+	return string(out)
 }

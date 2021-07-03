@@ -21,7 +21,7 @@ var (
 
 // Test Encoding of valid string
 func TestEncode(t *testing.T) {
-	out, err := Encode([]byte(unicodeString))
+	out, err := Encode(unicodeString)
 	if err != nil {
 		t.Error(err)
 	}
@@ -32,14 +32,14 @@ func TestEncode(t *testing.T) {
 
 // Test Decoding of valid string
 func TestDecode(t *testing.T) {
-	if string(Decode(ebcdicBytes)) != unicodeString {
+	if Decode(ebcdicBytes) != unicodeString {
 		t.Error("encountered Decoding error.")
 	}
 }
 
 // Test Encoding of invalid string
 func TestEncodeFail(t *testing.T) {
-	out, err := Encode([]byte(failString))
+	out, err := Encode(failString)
 	if err != nil && err != ErrEncode {
 		t.Error("encountered Encoding Failure error.")
 	}
@@ -57,27 +57,36 @@ func TestDecodeFail(t *testing.T) {
 
 // Test Encoding of entire Unicode <= 0xFF character map
 func TestEncodeCharMap(t *testing.T) {
-	out, err := Encode([]byte(string(unicodeMap)))
+	out, err := Encode(string(unicodeMap))
 	if err != nil {
 		t.Error(err)
 	}
-	if !bytes.Equal(out, ordered()) {
+	if !bytes.Equal(out, orderedBytes()) {
 		t.Error("encountered Encoding CharMap error.")
 	}
 }
 
 // Test Decoding of entire EBCDIC character map
 func TestDecodeCharMap(t *testing.T) {
-	if !bytes.Equal(Decode(ebcdicMap), ordered()) {
+	if Decode(ebcdicMap) != orderedRunes() {
 		t.Error("encountered Decoding CharMap error.")
 	}
 }
 
 // Output an ordered byte-slice, 0x00..0x100
-func ordered() []byte {
+func orderedBytes() []byte {
 	out := make([]byte, charMapLength+1)
 	for i := 0; i <= charMapLength; i++ {
 		out[i] = byte(i)
 	}
 	return out
+}
+
+// Output an ordered rune-slice, 0x00..0x100, as a string
+func orderedRunes() string {
+	out := make([]rune, charMapLength+1)
+	for i := 0; i <= charMapLength; i++ {
+		out[i] = rune(i)
+	}
+	return string(out)
 }
