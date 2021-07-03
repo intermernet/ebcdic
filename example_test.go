@@ -7,7 +7,7 @@ import (
 )
 
 func ExampleEncode() {
-	input := []byte("An alleged character set used on IBM dinosaurs")
+	input := "An alleged character set used on IBM dinosaurs"
 	output, err := ebcdic.Encode(input)
 	if err != nil {
 		panic(err)
